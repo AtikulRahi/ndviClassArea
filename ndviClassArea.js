@@ -33,25 +33,29 @@ var highVegetation = ndvi2.select('NDVI').gte(0.5);
 var areaWater = water.multiply(ee.Image.pixelArea()).reduceRegion({
   reducer: ee.Reducer.sum(),
   geometry: roi,
-  scale: 500
+  scale: 30,
+  bestEffort: true
 });
 
 var areaBareLand = bareLand.multiply(ee.Image.pixelArea()).reduceRegion({
   reducer: ee.Reducer.sum(),
   geometry: roi,
-  scale: 500
+  scale: 30,
+  bestEffort: true
 });
 
 var areaGrassLand = grassLand.multiply(ee.Image.pixelArea()).reduceRegion({
   reducer: ee.Reducer.sum(),
   geometry: roi,
-  scale: 500
+  scale: 30,
+  bestEffort: true
 });
 
 var areaHighVegetation = highVegetation.multiply(ee.Image.pixelArea()).reduceRegion({
   reducer: ee.Reducer.sum(),
   geometry: roi,
-  scale: 300
+  scale: 30,
+  bestEffort: true
 });
 
 print('Area of Water bodies (in square meters):', areaWater.get('NDVI'));
